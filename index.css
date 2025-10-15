@@ -1,0 +1,878 @@
+:root {
+  --light-bg: #f8f9fa;
+  --dark-bg: #202124;
+  --light-surface: #ffffff;
+  --dark-surface: #2d2e30;
+  --light-text-primary: #202124;
+  --dark-text-primary: #e8eaed;
+  --light-text-secondary: #5f6368;
+  --dark-text-secondary: #bdc1c6;
+  --light-primary: #1a73e8;
+  /* Google Blue */
+  --dark-primary: #8ab4f8;
+  --light-primary-hover: #185abc;
+  --dark-primary-hover: #aecbfa;
+  --light-border: #dadce0;
+  --dark-border: #5f6368;
+  --light-error: #d93025;
+  --dark-error: #f28b82;
+  --light-success: #1e8e3e;
+  /* Google Green */
+  --dark-success: #81c995;
+  --light-item-bg: #e8f0fe;
+  /* Light blue for items */
+  --dark-item-bg: #3c4043;
+  --light-item-hover-bg: #d2e3fc;
+  --dark-item-hover-bg: #4a4e51;
+  --light-disabled-bg: #e0e0e0;
+  --dark-disabled-bg: #3c4043;
+  --light-disabled-text: #a0a0a0;
+  --dark-disabled-text: #7f8184;
+  --light-shadow-color-1: rgba(60, 64, 67, 0.15);
+  --dark-shadow-color-1: rgba(0, 0, 0, 0.3);
+  --light-shadow-color-2: rgba(60, 64, 67, 0.1);
+  --dark-shadow-color-2: rgba(0, 0, 0, 0.2);
+  --light-focus-shadow-color: rgba(26, 115, 232, 0.2);
+  --dark-focus-shadow-color: rgba(138, 180, 248, 0.3);
+  --light-button-focus-shadow-color: rgba(26, 115, 232, 0.3);
+  --dark-button-focus-shadow-color: rgba(138, 180, 248, 0.4);
+  --light-button-text: white;
+  --dark-button-text: var(--dark-bg);
+  --light-danger: #d93025;
+  /* Error color */
+  --dark-danger: #f28b82;
+  --light-danger-hover: #b0201a;
+  --dark-danger-hover: #f6a39b;
+}
+
+body {
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  margin: 0;
+  background-color: light-dark(var(--light-bg), var(--dark-bg));
+  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container {
+  background-color: light-dark(var(--light-surface), var(--dark-surface));
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px light-dark(var(--light-shadow-color-1), var(--dark-shadow-color-1)),
+    0 4px 8px light-dark(var(--light-shadow-color-2), var(--dark-shadow-color-2));
+  width: 90%;
+  max-width: 900px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  color: light-dark(var(--light-primary), var(--dark-primary));
+  margin-bottom: 10px;
+  font-size: 2.2em;
+  font-weight: 500;
+}
+
+h2 {
+  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  font-weight: 400;
+}
+
+p {
+  margin-bottom: 20px;
+  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+  line-height: 1.6;
+}
+
+.import-section {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-input-label {
+  font-size: 0.9em;
+  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+}
+
+input[type="file"] {
+  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  padding: 8px 12px;
+  border-radius: 6px;
+  background-color: light-dark(var(--light-bg), var(--dark-item-bg));
+  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+  max-width: 300px;
+  /* Limit width of file input */
+  cursor: pointer;
+}
+
+input[type="file"]::file-selector-button {
+  background-color: light-dark(var(--light-primary), var(--dark-primary));
+  color: light-dark(var(--light-button-text), var(--dark-button-text));
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
+}
+
+input[type="file"]::file-selector-button:hover {
+  background-color: light-dark(var(--light-primary-hover), var(--dark-primary-hover));
+}
+
+.file-input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Space between file input and button */
+}
+
+button {
+  background-color: light-dark(var(--light-primary), var(--dark-primary));
+  color: light-dark(var(--light-button-text), var(--dark-button-text));
+  padding: 12px 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 2px light-dark(var(--light-shadow-color-2), var(--dark-shadow-color-2));
+  margin: 5px;
+  /* Add some margin for spacing if buttons wrap */
+}
+
+button:hover {
+  background-color: light-dark(var(--light-primary-hover), var(--dark-primary-hover));
+  box-shadow: 0 1px 3px light-dark(var(--light-shadow-color-1), var(--dark-shadow-color-1));
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px light-dark(var(--light-button-focus-shadow-color), var(--dark-button-focus-shadow-color));
+}
+
+button:disabled {
+  background-color: light-dark(var(--light-disabled-bg), var(--dark-disabled-bg));
+  color: light-dark(var(--light-disabled-text), var(--dark-disabled-text));
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+button.danger-button {
+  background-color: light-dark(var(--light-danger), var(--dark-danger));
+  color: light-dark(var(--light-button-text), var(--dark-button-text));
+  /* Ensure text is readable on danger background */
+}
+
+button.danger-button:hover {
+  background-color: light-dark(var(--light-danger-hover), var(--dark-danger-hover));
+}
+
+/* Ensure dark mode danger button text is also light if var(--dark-button-text) is dark */
+@media (prefers-color-scheme: dark) {
+  button.danger-button {
+    color: var(--light-button-text);
+    /* Or a specific light color for dark danger buttons */
+  }
+}
+
+
+.status-message {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-weight: 500;
+  min-height: 1.5em;
+  font-size: 1.1em;
+  transition: color 0.3s ease;
+}
+
+.status-message.error {
+  color: light-dark(var(--light-error), var(--dark-error));
+}
+
+.status-message.success {
+  color: light-dark(var(--light-success), var(--dark-success));
+}
+
+.status-message.large-success {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.game-board {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.game-columns {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.game-progress-display {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 15px;
+  background-color: light-dark(var(--light-surface), var(--dark-surface));
+  border-radius: 8px;
+  box-shadow: 0 1px 2px light-dark(var(--light-shadow-color-2), var(--dark-shadow-color-2));
+  margin-bottom: 10px;
+}
+
+.progress-matches {
+  color: light-dark(var(--light-success), var(--dark-success));
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
+.progress-mismatches {
+  color: light-dark(var(--light-error), var(--dark-error));
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
+/* Overall Learning Progress Display */
+.overall-progress-display {
+  background-color: light-dark(var(--light-surface), var(--dark-surface));
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px light-dark(var(--light-shadow-color-1), var(--dark-shadow-color-1));
+  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+}
+
+/* Pronunciation button styles */
+.pronounce-btn {
+  background: none;
+  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 8px;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+  flex-shrink: 0;
+}
+
+.pronounce-btn:hover {
+  opacity: 1;
+  background-color: light-dark(var(--light-primary), var(--dark-primary));
+  color: white;
+  border-color: light-dark(var(--light-primary), var(--dark-primary));
+}
+
+.pronounce-btn:active {
+  transform: scale(0.95);
+}
+
+/* Game item content layout */
+.game-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.term-text {
+  flex: 1;
+}
+
+/* Dictionary word list styles */
+.word-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.word-list-item {
+  margin-bottom: 8px;
+  padding: 8px;
+  background-color: light-dark(var(--light-item-bg), var(--dark-item-bg));
+  border-radius: 6px;
+  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+}
+
+.word-item-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.dictionary-pronounce {
+  flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .pronounce-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    margin-left: 4px;
+  }
+
+  .word-item-content {
+    gap: 4px;
+  }
+}
+
+.overall-progress-display h3 {
+  margin: 0 0 15px 0;
+  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.progress-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.progress-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.stat-numbers {
+  font-weight: 500;
+  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+}
+
+.progress-stat.learned {
+  border-left: 4px solid light-dark(var(--light-success), var(--dark-success));
+  padding-left: 15px;
+}
+
+.progress-stat.mismatched {
+  border-left: 4px solid light-dark(var(--light-error), var(--dark-error));
+  padding-left: 15px;
+}
+
+.stat-label {
+  font-weight: 500;
+  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+  font-size: 1em;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: light-dark(var(--light-border), var(--dark-border));
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-fill {
+  height: 100%;
+  transition: width 0.3s ease;
+  border-radius: 4px;
+}
+
+.learned-fill {
+  background-color: light-dark(var(--light-success), var(--dark-success));
+}
+
+.percentage {
+  align-self: flex-end;
+  font-weight: 500;
+  color: light-dark(var(--light-success), var(--dark-success));
+  font-size: 0.9em;
+}
+
+.mismatched-indicator {
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+#mismatchedMessage {
+  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+}
+
+.progress-stat.mismatched #mismatchedMessage.has-mismatched {
+  color: light-dark(var(--light-error), var(--dark-error));
+}
+
+@media (min-width: 768px) {
+  .progress-stats {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .progress-stat {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .progress-stat:last-child {
+    margin-right: 0;
+  }
+}
+
+.column {
+  flex: 1;
+  background-color: light-dark(var(--light-bg), var(--dark-item-bg));
+  /* Slightly different background for columns */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px light-dark(var(--light-shadow-color-2), var(--dark-shadow-color-2));
+  display: flex;
+  /* Use flexbox for column layout */
+  flex-direction: column;
+  /* Stack h2 and items-container vertically */
+}
+
+.column h2 {
+  margin-top: 0;
+  /* Remove default margin */
+  margin-bottom: 15px;
+  text-align: center;
+  color: light-dark(var(--light-primary), var(--dark-primary));
+}
+
+.items-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* Gap between items */
+  flex-grow: 1;
+  /* Allow container to grow and fill space */
+}
+
+.game-item {
+  background-color: light-dark(var(--light-surface), var(--dark-surface));
+  padding: 12px 15px;
+  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  display: flex;
+  /* Use flexbox for item content */
+  align-items: center;
+  /* Vertically center content if item has fixed height */
+  min-height: 50px;
+  /* Ensure a minimum height for better clickability and alignment */
+  flex-grow: 1;
+  /* Allow items to grow if container has extra space */
+}
+
+.game-item:hover {
+  background-color: light-dark(var(--light-item-hover-bg), var(--dark-item-hover-bg));
+  border-color: light-dark(var(--light-primary), var(--dark-primary));
+  transform: translateY(-2px);
+}
+
+.game-item:focus {
+  outline: none;
+  border-color: light-dark(var(--light-primary), var(--dark-primary));
+  box-shadow: 0 0 0 2px light-dark(var(--light-focus-shadow-color), var(--dark-focus-shadow-color));
+}
+
+.game-item.selected {
+  border-color: light-dark(var(--light-primary), var(--dark-primary));
+  background-color: light-dark(var(--light-item-hover-bg), var(--dark-item-hover-bg));
+  box-shadow: 0 2px 4px light-dark(var(--light-shadow-color-1), var(--dark-shadow-color-1));
+}
+
+.game-item.matched {
+  opacity: 0.6;
+  background-color: light-dark(var(--light-success), var(--dark-success));
+  color: light-dark(var(--light-button-text), var(--dark-text-primary));
+  border-color: light-dark(var(--light-success), var(--dark-success));
+  cursor: default;
+  pointer-events: none;
+  transform: scale(0.95);
+}
+
+.game-item.matched:hover {
+  transform: scale(0.95);
+}
+
+.game-item.incorrect {
+  background-color: var(--light-error-bg, #fce8e6);
+  color: var(--light-error-text, #a50e0e);
+  border-color: var(--light-error-border, #ea4335);
+  animation: shake 0.5s;
+}
+
+.learned-words-list li,
+.master-list-display li,
+#mismatched-attempts-list li {
+  display: flex;
+  /* Use flexbox for alignment */
+  align-items: flex-start;
+  /* Align items to the top, good for multi-line content */
+  padding: 8px 0;
+  border-bottom: 1px solid var(--light-border, #e0e0e0);
+  color: var(--light-text-secondary, #5f6368);
+  max-width: 100%;
+  /* word-wrap and overflow-wrap on li might be redundant if children handle it, but safe */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .learned-words-list li,
+  .master-list-display li,
+  #mismatched-attempts-list li {
+    border-bottom-color: var(--dark-border, #5f6368);
+    color: var(--dark-text-secondary, #bdc1c6);
+  }
+}
+
+.learned-words-list li strong,
+.master-list-display li strong,
+#mismatched-attempts-list li strong {
+  flex: 0 0 180px;
+  /* Term: no grow, no shrink, basis of 180px. Adjust width as needed. */
+  padding-left: 8px;
+  padding-right: 8px;
+  /* Space between term and definition column */
+  font-weight: 500;
+  color: var(--light-text-primary, #202124);
+  word-wrap: break-word;
+  /* Allow long terms to wrap within their fixed width */
+  overflow-wrap: break-word;
+  /* Ensure term itself can wrap if very long */
+  /* display: inline-block; and margin-right are no longer needed due to flex */
+}
+
+@media (prefers-color-scheme: dark) {
+
+  .learned-words-list li strong,
+  .master-list-display li strong,
+  #mismatched-attempts-list li strong {
+    color: var(--dark-text-primary, #e8eaed);
+  }
+}
+
+.learned-words-list li span.definition-text,
+.master-list-display li span.definition-text,
+#mismatched-attempts-list li span {
+  flex: 1;
+  /* Definition: takes remaining space and wraps */
+  /* display: inline-block; and vertical-align: top; are no longer needed due to flex */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  /* Ensure it wraps */
+}
+
+/* Ensure game items also allow full text display (already mostly covered but good to be explicit) */
+.game-item {
+  /* ... existing .game-item styles ... */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  /* Allow text to wrap naturally */
+  text-align: left;
+  /* Explicitly left-align text within game items */
+  /* height: auto; /* Ensure height adjusts to content, if not already default */
+  /* min-height: 60px; /* Or your existing min-height */
+}
+
+
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-5px);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  75% {
+    transform: translateX(-5px);
+  }
+}
+
+.controls-section,
+.danger-controls-section {
+  /* Apply to both sections */
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow buttons to wrap to the next line if needed */
+  justify-content: center;
+  gap: 10px;
+  /* Spacing between buttons */
+}
+
+/* Specific margin for danger controls if needed, otherwise the above handles it */
+.danger-controls-section {
+  margin-top: 10px;
+  /* Smaller top margin if desired, or remove if .controls-section gap is enough */
+}
+
+.learned-words-section {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: light-dark(var(--light-bg), var(--dark-item-bg));
+  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  border-radius: 8px;
+  text-align: left;
+}
+
+.learned-words-section h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+}
+
+.learned-words-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+  /* For scrollbar */
+}
+
+.learned-words-list ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.learned-words-list li {
+  display: flex;
+  /* Use flexbox for alignment */
+  align-items: flex-start;
+  /* Align items to the top, good for multi-line content */
+  padding: 8px 0;
+  border-bottom: 11px solid light-dark(var(--light-border), var(--dark-border));
+  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+  max-width: 100%;
+  /* word-wrap and overflow-wrap on li might be redundant if children handle it, but safe */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+.learned-words-list li:last-child {
+  border-bottom: none;
+}
+
+.learned-words-list strong {
+  color: light-dark(var(--light-primary), var(--dark-primary));
+  /* Prevent strong tag from breaking words if term is very long */
+  display: inline-block;
+  /* Or inline, check what looks best */
+  margin-right: 5px;
+  /* Add some space between term and definition */
+}
+
+/* Styles for the new Master List Section */
+.master-list-section {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: var(--light-surface, #ffffff);
+  border: 1px solid var(--light-border, #dadce0);
+  border-radius: 8px;
+  box-shadow: 0 1px 3px var(--light-shadow-color-1, rgba(60, 64, 67, 0.15));
+}
+
+@media (prefers-color-scheme: dark) {
+  .master-list-section {
+    background-color: var(--dark-surface, #2d2e30);
+    border-color: var(--dark-border, #5f6368);
+    box-shadow: 0 1px 3px var(--dark-shadow-color-1, rgba(0, 0, 0, 0.3));
+  }
+}
+
+.master-list-section h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.3em;
+  color: var(--light-text-primary, #202124);
+}
+
+@media (prefers-color-scheme: dark) {
+  .master-list-section h2 {
+    color: var(--dark-text-primary, #e8eaed);
+  }
+}
+
+.master-list-display ul {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  max-height: 300px;
+  /* Or any height you prefer */
+  overflow-y: auto;
+  /* Add scroll for long lists */
+}
+
+/* Definition of word display style */
+.master-list-display li {
+  text-align: left;
+  padding: 8px 0;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom: 1px solid var(--light-border, #e0e0e0);
+  color: var(--light-text-secondary, #5f6368);
+}
+
+@media (prefers-color-scheme: dark) {
+  .master-list-display li {
+    border-bottom-color: var(--dark-border, #5f6368);
+    color: var(--dark-text-secondary, #bdc1c6);
+  }
+}
+
+.master-list-display li:last-child {
+  border-bottom: none;
+}
+
+.master-list-display strong {
+  color: var(--light-text-primary, #202124);
+  font-weight: 500;
+  /* Prevent strong tag from breaking words if term is very long */
+  display: inline-block;
+  /* Or inline, check what looks best */
+  margin-right: 5px;
+  /* Add some space between term and definition */
+}
+
+@media (prefers-color-scheme: dark) {
+  .master-list-display strong {
+    color: var(--dark-text-primary, #e8eaed);
+  }
+}
+
+footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid light-dark(var(--light-border), var(--dark-border));
+  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+  font-size: 0.9em;
+}
+
+/* New styles for Mismatched Attempts section */
+.mismatched-attempts-section {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ffcccc;
+  /* Light red border */
+  background-color: #fff5f5;
+  /* Very light pink background */
+  border-radius: 5px;
+  text-align: left;
+}
+
+.mismatched-attempts-section h2 {
+  margin-top: 0;
+  color: #cc0000;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#mismatched-attempts-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 10px;
+  /* For scrollbar */
+}
+
+/* Specific overrides for mismatched attempts red borders and thick borders like learned words */
+#mismatched-attempts-list li {
+  border-bottom: 11px solid #ffe0e0;
+  /* Thick red border like learned words but in red */
+}
+
+#mismatched-attempts-list li:last-child {
+  border-bottom: none;
+}
+
+.file-input-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  /* Space between file input and button */
+}
+
+.game-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.cards-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cards-selector label {
+  font-size: 0.9em;
+  color: light-dark(var(--light-text-secondary), var(--dark-text-secondary));
+  white-space: nowrap;
+}
+
+.cards-selector select {
+  background-color: light-dark(var(--light-surface), var(--dark-surface));
+  color: light-dark(var(--light-text-primary), var(--dark-text-primary));
+  border: 1px solid light-dark(var(--light-border), var(--dark-border));
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: border-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.cards-selector select:hover {
+  border-color: light-dark(var(--light-primary), var(--dark-primary));
+}
+
+.cards-selector select:focus {
+  outline: none;
+  border-color: light-dark(var(--light-primary), var(--dark-primary));
+  box-shadow: 0 0 0 2px light-dark(var(--light-focus-shadow-color), var(--dark-focus-shadow-color));
+}

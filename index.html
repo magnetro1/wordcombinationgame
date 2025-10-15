@@ -1,0 +1,135 @@
+<meta charset="UTF-8">
+<script type="importmap">
+  {
+    "imports": {
+    }
+  }
+  </script>
+<!-- Add Google Fonts Link -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500&family=Roboto:wght@400;500&display=swap"
+  rel="stylesheet">
+
+<div class="container">
+  <h1>Memorization Game</h1>
+  <div id="importSection" class="import-section">
+    <p id="introText">
+      Import your words from a CSV file to generate a matching game. Match the terms with their correct definitions!
+    </p>
+    <label for="csvFileInput" class="file-input-label">Choose a CSV file (Format: Term,Definition):</label>
+    <div class="file-input-group"> <!-- New wrapper -->
+      <input type="file" id="csvFileInput" accept=".csv">
+      <button id="importCsvButton">Import Words from CSV</button>
+    </div>
+  </div>
+  <div class="game-controls">
+    <button id="generateButton">Generate Game</button>
+    <div class="cards-selector">
+      <label for="cardsPerGameSelect">Cards per game:</label>
+      <select id="cardsPerGameSelect">
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="12">12</option>
+        <option value="15">15</option>
+        <option value="20">20</option>
+        <option value="25">25</option>
+        <option value="30">30</option>
+      </select>
+    </div>
+  </div>
+  <div id="statusMessage" class="status-message" aria-live="polite"></div>
+
+  <!-- Overall Learning Progress Display -->
+  <div id="overallProgressDisplay" class="overall-progress-display" style="display: none;">
+    <h3>Learning Progress</h3>
+    <div class="progress-stats">
+      <div class="progress-stat learned">
+        <div class="stat-header">
+          <span class="stat-label">Learned:</span>
+          <span class="stat-numbers">
+            <span id="learnedCount">0</span> / <span id="totalWordsCount">0</span>
+          </span>
+        </div>
+        <div class="progress-bar">
+          <div id="learnedProgressBar" class="progress-fill learned-fill" style="width: 0%"></div>
+        </div>
+        <span id="learnedPercentage" class="percentage">0%</span>
+      </div>
+      <div class="progress-stat mismatched">
+        <div class="stat-header">
+          <span class="stat-label">Incorrect:</span>
+          <span id="mismatchedCount">0</span>
+        </div>
+        <div class="mismatched-indicator">
+          <span id="mismatchedMessage">All caught up!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameBoard" class="game-board">
+    <div id="gameProgressDisplay" class="game-progress-display" style="display: none;">
+      <span class="progress-matches">Matches: 0</span>
+      <span class="progress-mismatches">Mismatches: 0</span>
+    </div>
+    <div class="game-columns">
+      <div class="column">
+        <h2>Terms</h2>
+        <div id="termsContainer" class="items-container">
+          <!-- Terms will be generated here -->
+        </div>
+      </div>
+      <div class="column">
+        <h2>Definitions</h2>
+        <div id="definitionsContainer" class="items-container">
+          <!-- Definitions will be generated here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="controls-section">
+    <button id="stopGameButton" style="display: none;">Stop Game</button>
+    <button id="toggleLearnedWordsButton">Show Learned Words</button>
+    <button id="toggleMismatchedAttemptsButton">Show Mismatched Words</button> <!-- New Button -->
+    <button id="toggleMasterListButton">Show Full Dictionary</button> <!-- New Button -->
+  </div>
+  <div class="danger-controls-section"> <!-- New row for danger buttons -->
+    <button id="resetLearnedItemsButton" class="danger-button">Reset Learning Progress</button>
+    <button id="resetDatabaseButton" class="danger-button">Reset Imported Words</button>
+  </div>
+
+  <div id="learnedWordsSection" class="learned-words-section" style="display: none;">
+    <h2>Learned Words</h2>
+    <div id="learnedWordsList" class="learned-words-list">
+      <!-- Learned words will be populated here -->
+    </div>
+  </div>
+
+  <!-- New Section for Mismatched Words -->
+  <div id="mismatchedAttemptsSection" class="mismatched-attempts-section" style="display: none;">
+    <h2>Mismatched Words</h2>
+    <div id="mismatched-attempts-list" class="mismatched-attempts-list">
+      <!-- Mismatched Words will be populated here -->
+    </div>
+  </div>
+
+  <!-- New Section for Master List -->
+  <div id="masterListSection" class="master-list-section" style="display: none;">
+    <h2>Full Word Dictionary</h2>
+    <div id="masterListDisplay" class="master-list-display">
+      <!-- Master word list will be populated here -->
+    </div>
+  </div>
+
+</div>
+<link rel="stylesheet" href="index.css">
+<script src="main.tsx" type="module"></script>

@@ -1,0 +1,5 @@
+{
+  "name": "CSV Memorization Game",
+  "description": "Create an interactive memorization game by importing terms and definitions from your own CSV file. Track your learned words and reset progress.",
+  "requestFramePermissions": [ ]
+}
